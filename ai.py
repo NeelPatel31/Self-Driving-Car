@@ -86,18 +86,16 @@ class Dqn():
         return sum(self.reward_window)/(len(self.reward_window)+1.0)
     
     def save(self):
-        torch.save({
-            'state_dict':self.model.state_dict(),
-    	    'optimizer':self.optimizer.state_dict()
-        },'last_brain.pth')
-
+        torch.save({'state_dict': self.model.state_dict(),
+                    'optimizer' : self.optimizer.state_dict(),
+                   }, 'last_brain.pth')
+    
     def load(self):
         if os.path.isfile('last_brain.pth'):
-            print("=> Loading checkpoint...")
-            checkpoint = torch.load("last_brain.pth") 
-            self.model.load_state_dict(checkpoint['state_dict'])   
-            self.model.load_state_dict(checkpoint['optimizer'])
-            print("done!")
+            print("=> loading checkpoint... ")
+            checkpoint = torch.load('last_brain.pth')
+            self.model.load_state_dict(checkpoint['state_dict'])
+            self.optimizer.load_state_dict(checkpoint['optimizer'])
+            print("done !")
         else:
-            print("No checkpoint found...")   
-        
+            print("no checkpoint found...")
