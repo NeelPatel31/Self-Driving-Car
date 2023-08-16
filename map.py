@@ -188,7 +188,8 @@ class MyPaintWidget(Widget):
     def on_touch_down(self, touch):  # puttin some sand when we do a left click
         global length, n_points, last_x, last_y
         with self.canvas:
-            Color(0.8,0.7,0)  # rgb(204, 178, 0), yellow for sand
+            Color(0.6, 0.5, 0.2)
+            # Color(0.8,0.7,0)  # rgb(204, 178, 0), yellow for sand
             d = 10.
             touch.ud['line'] = Line(points = (touch.x, touch.y), width = 10)
             last_x = int(touch.x)
