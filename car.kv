@@ -5,6 +5,8 @@
     size: 20, 10
     canvas:
         PushMatrix
+        Color:
+            rgba: 0, 0, 0, 1
         Rotate:
             angle: self.angle
             origin: self.center
@@ -17,7 +19,7 @@
     size: 10,10
     canvas:
         Color:
-            rgba: 1,0,0,1
+            rgba: 1, 0, 0, 1  # Red
         Ellipse:
             pos: self.pos
             size: self.size
@@ -25,7 +27,7 @@
     size: 10,10
     canvas:
         Color:
-            rgba: 0,0,1,1
+            rgba: 0, 0, 1, 1  # Blue
         Ellipse:
             pos: self.pos
             size: self.size
@@ -34,12 +36,18 @@
     size: 10,10
     canvas:
         Color:
-            rgba: 0,1,0,1
+            rgba: 0, 1, 0, 1  # Green
         Ellipse:
             pos: self.pos
             size: self.size
 
 <Game>:
+    canvas.before:
+        Color:
+            rgba: 0.9333333333333333, 0.9333333333333333, 0.8941176470588236, 1  # Color: #eeeee4
+        Rectangle:
+            pos: self.pos
+            size: self.size
     car: game_car
     ball1: game_ball1
     ball2: game_ball2
