@@ -222,15 +222,24 @@ class CarApp(App):
         self.painter = MyPaintWidget()
         clearbtn = Button(text = 'clear')
         savebtn = Button(text = 'save', pos = (parent.width, 0))
-        loadbtn = Button(text = 'load', pos = (2 * parent.width, 0))
+        loadbtn = Button(text = 'load', pos = (2*parent.width, 0))
+        viewbtn = Button(text = 'View', pos = (3*parent.width,0))
         clearbtn.bind(on_release = self.clear_canvas)
         savebtn.bind(on_release = self.save)
         loadbtn.bind(on_release = self.load)
+        viewbtn.bind(on_release = self.viewGraph)
         parent.add_widget(self.painter)
         parent.add_widget(clearbtn)
         parent.add_widget(savebtn)
         parent.add_widget(loadbtn)
+        parent.add_widget(viewbtn)
         return parent
+
+    def viewGraph(self,obj):
+        plt.plot(scores)
+        plt.xlabel("Window size")
+        plt.ylabel("Reward")
+        plt.show()
 
     def clear_canvas(self, obj):
         global sand
@@ -241,9 +250,11 @@ class CarApp(App):
         print("saving brain...")
         brain.save()
         plt.plot(scores)
+        plt.xlabel("Window size")
+        plt.ylabel("Reward")
         plt.show()
 
-    def load(self, obj):
+    def load(self, obj):    
         print("loading last saved brain...")
         brain.load()
 
